@@ -1,0 +1,25 @@
+.delete-acc {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.modal-p {
+  margin-bottom: 30px;
+}
+
+.modal {
+  &-acc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+  &-close {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    font-size: 26px;
+  }
+}

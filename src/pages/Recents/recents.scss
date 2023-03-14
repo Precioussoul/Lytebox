@@ -1,0 +1,53 @@
+.recents-view {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  @media (max-width: 600px) {
+    justify-content: space-between;
+    padding: 0 5px;
+  }
+  > * {
+    margin: 8px;
+
+    @media (max-width: 600px) {
+      margin: 6px 2px;
+    }
+  }
+}
+
+.recent-header {
+  display: none;
+  visibility: hidden;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  margin-bottom: 10px;
+  &.dark {
+    color: #ccc;
+  }
+
+  @media (max-width: 600px) {
+    display: flex;
+    visibility: visible;
+  }
+}
+
+.recent-details {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+
+  p {
+    color: #999;
+    font-size: 14px;
+    padding: 5px 0;
+  }
+}
+
+.recents-activities-view {
+  overflow: hidden !important;
+  padding: 0 3px;
+}

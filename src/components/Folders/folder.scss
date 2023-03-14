@@ -1,0 +1,85 @@
+$box-shadow-ff: 1px 2px 4px 2px rgba(201, 201, 201, 0.3);
+
+.folder {
+  align-items: center;
+  position: relative;
+  padding: 1px;
+  margin-bottom: 5px;
+
+  .folder-detail {
+    display: flex;
+    padding: 0 5px;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .folder-name {
+      margin-top: -17px;
+      text-align: center;
+      // font-weight: bold;
+      color: rgb(14, 13, 13);
+      &.dark {
+        color: #ccc;
+      }
+    }
+  }
+
+  .folder-icons {
+    position: relative;
+  }
+  .icon-main {
+    font-size: 170px;
+    color: #a3a9df;
+    left: 20px;
+
+    &.dark {
+      color: #161b33;
+      color: #7d8597;
+    }
+
+    @media (min-width: 600px) and (max-width: 991px) {
+      font-size: 160px;
+    }
+
+    @media (min-width: 321px) and (max-width: 399px) {
+      font-size: 145px;
+    }
+    @media (max-width: 320px) {
+      font-size: 130px;
+    }
+  }
+  .icon-sub {
+    position: absolute;
+    bottom: 15px;
+    font-size: 75px;
+    color: #5a65f3;
+    right: 22px;
+
+    &.dark {
+      color: #474973;
+    }
+    @media (max-width: 400px) {
+      font-size: 60px;
+    }
+    @media (min-width: 401px) and (max-width: 991px) {
+      font-size: 70px;
+    }
+  }
+
+  .icon-starred {
+    position: absolute;
+    top: 40px;
+    font-size: 15px;
+    color: #5a65f3;
+    left: 22px;
+
+    &.dark {
+      color: #474973;
+    }
+    @media (max-width: 600px) {
+      top: 33px;
+    }
+  }
+}
+.folder-icons-wrapper {
+  display: block;
+}

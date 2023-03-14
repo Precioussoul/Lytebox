@@ -1,0 +1,53 @@
+$box-shadow: rgba(0, 120, 120, 0.5) 0px 5px 15px;
+
+.f-Mobile {
+  width: 115px;
+  height: 115px;
+  background-color: #eef2fd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  &.dark {
+    background-color: #121212;
+    box-shadow: $box-shadow;
+  }
+
+  @media (min-width: 381px) and (max-width: 424px) {
+    width: 108px;
+    height: 108px;
+  }
+
+  @media (min-width: 321px) and (max-width: 380px) {
+    width: 98.5px;
+    height: 98.5px;
+  }
+  @media (max-width: 320px) {
+    width: 85px;
+    height: 110px;
+  }
+
+  &-img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-name {
+    color: #808080;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+  &-count-mb {
+    color: #808080;
+    font-size: 13px;
+  }
+}
