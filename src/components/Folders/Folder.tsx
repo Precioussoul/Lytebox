@@ -33,7 +33,6 @@ export default function Folder({ folder }: { folder: FolderType }) {
   }
 
   // const fromFav = true;
-  console.log('folder', folder)
 
   const favRef = doc(databaseRef.foldersRef, folder.id)
 

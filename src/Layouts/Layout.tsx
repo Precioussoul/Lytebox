@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { color } from '../theme';
-import './Layout.scss';
+import React, { useContext, useState } from 'react'
+import { color } from '../theme'
+import './Layout.scss'
 import {
   ListItemText,
   ListItemIcon,
@@ -17,7 +17,7 @@ import {
   Button,
   Snackbar,
   Alert,
-} from '@mui/material';
+} from '@mui/material'
 
 import {
   AccessTime,
@@ -28,38 +28,38 @@ import {
   Menu,
   CloudUpload,
   CreateNewFolder,
-} from '@mui/icons-material';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+} from '@mui/icons-material'
+import { useNavigate, useLocation, useParams } from 'react-router-dom'
 
-import Navbar from '../components/Navbar/Navbar';
-import Storage from '../components/StorageProgress/Storage';
-import UploadFiles from '../components/uploadCenter/Upload';
-import FolderModal from '../components/FolderModal/FolderModal';
-import useFolder, { ROOT_FOLDER } from '../hooks/useFolder';
-import { databaseRef, storage } from '../firebase/firebase';
-import { AuthContext } from '../contexts/AuthContext';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { addDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
-import { v4 as uuidV4 } from 'uuid';
-import { FileAndFolderContext } from '../contexts/FileAndFolderContext';
-import LinearProgressWithLabel from '../components/LinearProgressBar';
-import { ThemeContext } from '../App';
+import Navbar from '../components/Navbar/Navbar'
+import Storage from '../components/StorageProgress/Storage'
+import UploadFiles from '../components/uploadCenter/Upload'
+import FolderModal from '../components/FolderModal/FolderModal'
+import useFolder, { ROOT_FOLDER } from '../hooks/useFolder'
+import { databaseRef, storage } from '../firebase/firebase'
+import { AuthContext } from '../contexts/AuthContext'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { addDoc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { v4 as uuidV4 } from 'uuid'
+import { FileAndFolderContext } from '../contexts/FileAndFolderContext'
+import LinearProgressWithLabel from '../components/LinearProgressBar'
+import { ThemeContext } from '../App'
 
-const drawerWidth = 210;
-const drawerWidth2 = 270;
-const xlWidth = 320;
+const drawerWidth = 210
+const drawerWidth2 = 270
+const xlWidth = 320
 
-const customWidthXL = drawerWidth + xlWidth;
-const customWidthMd = 480;
+const customWidthXL = drawerWidth + xlWidth
+const customWidthMd = 480
 
 function Layout(props: any) {
-  const { window, children } = props;
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [open, setOpen] = useState(false);
-  const { folder_Id } = useParams();
-  const { folder } = useFolder(folder_Id);
-  const { currentUser } = React.useContext(AuthContext);
-  const { mode } = React.useContext(ThemeContext);
+  const { window, children } = props
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const { folder_Id } = useParams()
+  const { folder } = useFolder(folder_Id)
+  const { currentUser } = React.useContext(AuthContext)
+  const { mode } = React.useContext(ThemeContext)
   const {
     setUpFile,
     setUploadingFiles,
@@ -69,79 +69,77 @@ function Layout(props: any) {
     show,
     uploadingFiles,
     upfile,
-  } = useContext(FileAndFolderContext);
+  } = useContext(FileAndFolderContext)
 
-  const currentFolder = folder;
+  const currentFolder = folder
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+    setOpen(false)
+  }
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   const handleMultipleFileUpload = (e: any) => {
-    e.preventDefault();
-    const files = e.target.files;
+    e.preventDefault()
+    const files = e.target.files
 
-    const fileArr = [];
+    const fileArr = []
     for (let i = 0; i < files.length; i++) {
-      fileArr.push(files[i]);
+      fileArr.push(files[i])
     }
 
     fileArr.forEach((file) => {
-      setUpFile(file);
-      const defaultFileValue = file.size / 1024 / 1024;
-      const fileSize = `${Math.round(defaultFileValue * 100) / 100}`;
+      setUpFile(file)
+      const defaultFileValue = file.size / 1024 / 1024
+      const fileSize = `${Math.round(defaultFileValue * 100) / 100}`
 
-      if (currentFolder == null || file == null) return;
-      const id = uuidV4();
-      handleCloseShow();
+      if (currentFolder == null || file == null) return
+      const id = uuidV4()
+      handleCloseShow()
 
       setUploadingFiles((prevState: any) => [
         ...prevState,
         { id: id, name: file.name, progress: 0, error: false },
-      ]);
+      ])
 
       const filePath =
         currentFolder === ROOT_FOLDER
           ? `${currentFolder.path.join('/')}/${file.name}`
-          : `${currentFolder.path.join('/')}/${currentFolder.name}/${
-              file.name
-            }`;
+          : `${currentFolder.path.join('/')}/${currentFolder.name}/${file.name}`
 
-      const fileRef = ref(storage, `files/${currentUser.uid}/${filePath}`);
+      const fileRef = ref(storage, `files/${currentUser.uid}/${filePath}`)
 
-      const uploadTask = uploadBytesResumable(fileRef, file);
+      const uploadTask = uploadBytesResumable(fileRef, file)
 
       uploadTask.on(
         'state_changed',
         (snapshot) => {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
+          )
           setUploadingFiles((prevState: any) => {
             return prevState.map((uploadFile: any) => {
               if (uploadFile.id === id) {
-                return { ...uploadFile, progress: progress };
+                return { ...uploadFile, progress: progress }
               }
-              return uploadFile;
-            });
-          });
+              return uploadFile
+            })
+          })
         },
         () => {
           setUploadingFiles((prevState: any) => {
             return prevState.filter((uploadFile: any) => {
               if (uploadFile.id === id) {
-                setError(true);
-                return { ...uploadFile, error: true };
+                setError(true)
+                return { ...uploadFile, error: true }
               }
-              return uploadFile;
-            });
-          });
+              return uploadFile
+            })
+          })
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
@@ -151,15 +149,15 @@ function Layout(props: any) {
                 where('name', '==', file.name),
                 where('folderId', '==', currentFolder.id),
                 where('userId', '==', currentUser.uid)
-              );
+              )
 
               getDocs(q).then((existingFiles: any) => {
-                const existingFile = existingFiles.docs[0];
+                const existingFile = existingFiles.docs[0]
                 if (existingFile) {
-                  const existRef: any = ref(existingFile);
+                  const existRef: any = ref(existingFile)
                   updateDoc(existRef, {
                     url: downloadUrl,
-                  });
+                  })
                 } else {
                   addDoc(databaseRef.filesRef, {
                     name: file.name,
@@ -172,74 +170,74 @@ function Layout(props: any) {
                     folderName: currentFolder.name,
                     userId: currentUser.uid,
                     createdAt: databaseRef.timestamp,
-                  });
+                  })
                 }
-              });
+              })
             })
             .then(() => {
               setUploadingFiles((prevState: any) => {
                 return prevState.filter((uploadFile: any) => {
-                  return uploadFile.id !== id;
-                });
-              });
-              setUpFile('');
-              setUploadingFiles([]);
-            });
+                  return uploadFile.id !== id
+                })
+              })
+              setUpFile('')
+              setUploadingFiles([])
+            })
         }
-      );
-    });
-  };
+      )
+    })
+  }
 
   const handleFileUpload = (e: any) => {
-    e.preventDefault();
-    const file = e.target.files[0];
-    setUpFile(file);
-    const defaultFileValue = file.size / 1024 / 1024;
-    const fileSize = `${Math.round(defaultFileValue * 100) / 100}`;
+    e.preventDefault()
+    const file = e.target.files[0]
+    setUpFile(file)
+    const defaultFileValue = file.size / 1024 / 1024
+    const fileSize = `${Math.round(defaultFileValue * 100) / 100}`
 
-    if (currentFolder == null || file == null) return;
-    const id = uuidV4();
-    handleCloseShow();
+    if (currentFolder == null || file == null) return
+    const id = uuidV4()
+    handleCloseShow()
 
     setUploadingFiles((prevState: any) => [
       ...prevState,
       { id: id, name: file.name, progress: 0, error: false },
-    ]);
+    ])
 
     const filePath =
       currentFolder === ROOT_FOLDER
         ? `${currentFolder.path.join('/')}/${file.name}`
-        : `${currentFolder.path.join('/')}/${currentFolder.name}/${file.name}`;
+        : `${currentFolder.path.join('/')}/${currentFolder.name}/${file.name}`
 
-    const fileRef = ref(storage, `files/${currentUser.uid}/${filePath}`);
+    const fileRef = ref(storage, `files/${currentUser.uid}/${filePath}`)
 
-    const uploadTask = uploadBytesResumable(fileRef, file);
+    const uploadTask = uploadBytesResumable(fileRef, file)
 
     uploadTask.on(
       'state_changed',
       (snapshot) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        )
         setUploadingFiles((prevState: any) => {
           return prevState.map((uploadFile: any) => {
             if (uploadFile.id === id) {
-              return { ...uploadFile, progress: progress };
+              return { ...uploadFile, progress: progress }
             }
-            return uploadFile;
-          });
-        });
+            return uploadFile
+          })
+        })
       },
       () => {
         setUploadingFiles((prevState: any) => {
           return prevState.filter((uploadFile: any) => {
             if (uploadFile.id === id) {
-              setError(true);
-              return { ...uploadFile, error: true };
+              setError(true)
+              return { ...uploadFile, error: true }
             }
-            return uploadFile;
-          });
-        });
+            return uploadFile
+          })
+        })
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref)
@@ -249,15 +247,15 @@ function Layout(props: any) {
               where('name', '==', file.name),
               where('folderId', '==', currentFolder.id),
               where('userId', '==', currentUser.uid)
-            );
+            )
 
             getDocs(q).then((existingFiles: any) => {
-              const existingFile = existingFiles.docs[0];
+              const existingFile = existingFiles.docs[0]
               if (existingFile) {
-                const existRef: any = ref(existingFile);
+                const existRef: any = ref(existingFile)
                 updateDoc(existRef, {
                   url: downloadUrl,
-                });
+                })
               } else {
                 addDoc(databaseRef.filesRef, {
                   name: file.name,
@@ -270,21 +268,21 @@ function Layout(props: any) {
                   folderName: currentFolder.name,
                   userId: currentUser.uid,
                   createdAt: databaseRef.timestamp,
-                });
+                })
               }
-            });
+            })
           })
           .then(() => {
             setUploadingFiles((prevState: any) => {
               return prevState.filter((uploadFile: any) => {
-                return uploadFile.id !== id;
-              });
-            });
-            setUpFile('');
-          });
+                return uploadFile.id !== id
+              })
+            })
+            setUpFile('')
+          })
       }
-    );
-  };
+    )
+  }
 
   const menuItems = [
     {
@@ -312,7 +310,7 @@ function Layout(props: any) {
       icon: <Settings color={mode === 'dark' ? 'secondary' : 'primary'} />,
       path: '/gen-settings',
     },
-  ];
+  ]
 
   const drawer = (
     <div>
@@ -327,9 +325,9 @@ function Layout(props: any) {
             sx={{ color: mode === "dark" ? "text.color" : color.primaryColor2 }}
           /> */}
           <div className='hbs-logo layout'>
-            <img src='/images/hbs-logo.png' alt='Hbs Drive' />
+            <img src='/images/lytebox.png' alt='Hbs Drive' />
           </div>
-          Hbs Drive
+          Lytebox
         </Typography>
       </Toolbar>
       <Divider />
@@ -409,10 +407,10 @@ function Layout(props: any) {
         <span className='upgrade-link'>Upgrade Now</span>
       </Box>
     </div>
-  );
+  )
 
   const container =
-    window !== undefined ? () => window.document.body : undefined;
+    window !== undefined ? () => window.document.body : undefined
 
   return (
     //   main box
@@ -541,9 +539,9 @@ function Layout(props: any) {
                     onClose={() => {
                       setUploadingFiles((prevState: any) => {
                         return prevState.filter((uploadFile: any) => {
-                          return uploadFile.id !== file.id;
-                        });
-                      });
+                          return uploadFile.id !== file.id
+                        })
+                      })
                     }}
                   >
                     <Box
@@ -604,7 +602,7 @@ function Layout(props: any) {
         </Box>
       </Box>
     </>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

@@ -1,26 +1,22 @@
 $box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
 $black-shadow: rgb(0 120 120 / 64%) 0px 5px 15px;
-
 .form {
   width: 500px;
   padding: 20px;
   box-shadow: $box-shadow;
   background-color: #fff;
   border-radius: 10px;
-
   &.dark {
     box-shadow: $black-shadow;
     background-color: #121212;
     color: #ccc;
   }
-
   @media (max-width: 330px) {
     width: 300px;
   }
   @media (min-width: 331px) and (max-width: 600px) {
     width: 370px;
   }
-
   &-input {
     width: 100%;
   }
@@ -38,25 +34,22 @@ $black-shadow: rgb(0 120 120 / 64%) 0px 5px 15px;
 .account {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
-
+  // padding: 20px 0;
   &.dark {
     color: #ccc;
-
     & > * {
       color: #ccc;
     }
   }
-
   & > * {
     margin: 0 5px;
   }
-
   & > a {
     color: #5a65f3;
     font-weight: bold;
   }
 }
+
 .forget-p {
   text-align: right;
 }
@@ -68,12 +61,25 @@ $black-shadow: rgb(0 120 120 / 64%) 0px 5px 15px;
   text-align: center;
   font-size: 20px;
 }
+
 .hbs-logo {
   display: flex;
   width: auto;
   height: auto;
-
   img {
     width: 100%;
   }
+  margin-bottom: 0.5em;
+}
+
+.demo-header {
+  text-align: center;
+  color: #333;
+}
+
+.forget-password {
+  padding-top: 10px;
+  text-align: right;
+  color: #5a65f3;
+  font-weight: bold;
 }

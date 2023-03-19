@@ -48,6 +48,11 @@ export type AuthGlobalType = {
   updateEmailAddress: (email: string) => any
   updateCurrentPassword: (password: string) => any
   deleteUserAccount: (currentUser: User) => any
+  signinWithGoogle: (
+    setError: (error: string) => void,
+    navigate: any,
+    setLoading: any
+  ) => any
 }
 
 export type handleFileUploadProps = {

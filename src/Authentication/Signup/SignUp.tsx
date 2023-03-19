@@ -1,4 +1,4 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff } from '@mui/icons-material'
 import {
   Button,
   FormControl,
@@ -7,59 +7,59 @@ import {
   InputLabel,
   OutlinedInput,
   TextField,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useContext, useState } from 'react';
-import './SignUp.scss';
-import { AuthContext } from '../../contexts/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../App';
+} from '@mui/material'
+import { Box } from '@mui/system'
+import React, { useContext, useState } from 'react'
+import './SignUp.scss'
+import { AuthContext } from '../../contexts/AuthContext'
+import { Link, useNavigate } from 'react-router-dom'
+import { ThemeContext } from '../../App'
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const { signupUser, currentUser } = useContext(AuthContext);
-  const { mode } = useContext(ThemeContext);
-  const navigate = useNavigate();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('')
+  const { signupUser, currentUser, signinWithGoogle } = useContext(AuthContext)
+  const { mode } = useContext(ThemeContext)
+  const navigate = useNavigate()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+    setShowPassword(!showPassword)
+  }
   const handleClickShowConfirmPassword = () => {
-    setShowPassword(!showPassword);
-  };
+    setShowPassword(!showPassword)
+  }
 
   const handleMouseDownPassword = (event: any) => {
-    event.preventDefault();
-  };
+    event.preventDefault()
+  }
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(email, password);
+    e.preventDefault()
+    console.log(email, password)
 
     if (password !== confirmPassword) {
-      return setError('password do not match');
+      return setError('password do not match')
     }
 
     try {
-      setError('');
-      setLoading(true);
-      signupUser(email, password);
+      setError('')
+      setLoading(true)
+      signupUser(email, password)
 
-      navigate('/login');
+      navigate('/login')
     } catch {
-      setError('Failed to sign in user, check credentials');
-      setLoading(false);
+      setError('Failed to sign in user, check credentials')
+      setLoading(false)
     }
-  };
+  }
 
-  console.log(currentUser, 'currentuser');
+  console.log(currentUser, 'currentuser')
   return (
     <Box
       sx={{
@@ -77,7 +77,7 @@ const SignUp = () => {
       }}
     >
       <div className='hbs-logo'>
-        <img src='/images/hbs-logo.png' alt='Hbs Drive' />
+        <img src='/images/lytebox.png' alt='Lytebox' />
       </div>
       <form className={`form ${mode}`} onSubmit={handleSubmit}>
         <p className='form-header'>Sign up for new account</p>
@@ -159,15 +159,35 @@ const SignUp = () => {
           </Button>
         </Box>
       </form>
-      <div className={`account ${mode}`}>
-        <Link to='/forgot-password'>Forgot Password</Link>
-      </div>
+
+      <Button
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '0.3rem 3rem',
+          marginTop: '1.2rem',
+        }}
+        variant='outlined'
+        disabled={loading}
+        disableElevation={loading}
+        onClick={() => signinWithGoogle(setError, setLoading, navigate)}
+      >
+        <div className='google-signin-wrapper'>
+          <img
+            src='images/google.png'
+            alt='google signin'
+            className='google-signin'
+          />
+        </div>
+        <p className='google-signin-text'>Sign up With Google</p>
+      </Button>
       <div className={`account ${mode}`}>
         <p>Already have an account ?</p>
         <Link to='/login'>Log in</Link>
       </div>
     </Box>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

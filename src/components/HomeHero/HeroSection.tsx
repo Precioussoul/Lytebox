@@ -1,11 +1,11 @@
-import { Button } from '@mui/material';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './hero.scss';
-import { modeProps } from '../../types';
+import { Button } from '@mui/material'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import './hero.scss'
+import { modeProps } from '../../types'
 
 const HeroSection = ({ mode }: modeProps) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <div className='hero-section' id='about'>
@@ -63,7 +63,7 @@ const HeroSection = ({ mode }: modeProps) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

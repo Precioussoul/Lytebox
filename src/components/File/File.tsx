@@ -57,8 +57,6 @@ export default function File({ file, fromTrash }: FileProps) {
     setOpenNotify(false)
   }
 
-  console.log('file', file)
-
   let currentFolder
 
   if (folder) {

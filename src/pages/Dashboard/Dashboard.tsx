@@ -153,32 +153,44 @@ export default function Dashboard() {
               />
             </div>
           </div>
-
-          <div className='folders'>
-            {childFolders.length > 0 && (
-              <div className='folders-info'>
-                <h4>Folders</h4>
-              </div>
-            )}
-            {childFolders.length > 0 && (
-              <div className='folders-view'>
-                {childFolders.map((childFolder: FolderType) => (
-                  <Folder key={childFolder.id} folder={childFolder} />
-                ))}
-              </div>
-            )}
-          </div>
-          {childFiles.length > 0 && (
-            <div className='file-info'>
-              <h4>Files</h4>
+          {childFiles.length <= 0 && childFolders.length <= 0 ? (
+            <div className='welcome-empty'>
+              <h2>Welcome to Lytebox</h2>
+              <img src='/images/handshake.png' alt='' />
+              <p>
+                There is currently no file or folder in your secure box at the
+                moment!!
+              </p>
             </div>
-          )}
-          {childFiles.length > 0 && (
-            <div className='file-view'>
-              {childFiles.map((childFile: FileType) => (
-                <File key={childFile.id} file={childFile} />
-              ))}
-            </div>
+          ) : (
+            <>
+              <div className='folders'>
+                {childFolders.length > 0 && (
+                  <div className='folders-info'>
+                    <h4>Folders</h4>
+                  </div>
+                )}
+                {childFolders.length > 0 && (
+                  <div className='folders-view'>
+                    {childFolders.map((childFolder: FolderType) => (
+                      <Folder key={childFolder.id} folder={childFolder} />
+                    ))}
+                  </div>
+                )}
+              </div>
+              {childFiles.length > 0 && (
+                <div className='file-info'>
+                  <h4>Files</h4>
+                </div>
+              )}
+              {childFiles.length > 0 && (
+                <div className='file-view'>
+                  {childFiles.map((childFile: FileType) => (
+                    <File key={childFile.id} file={childFile} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       ) : (

@@ -1,27 +1,27 @@
-import { AccountCircle, DarkMode, LightMode } from '@mui/icons-material';
-import { MenuItem, Menu } from '@mui/material';
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './navbarHome.scss';
-import { HomePageNavBarProps } from '../../types';
+import { AccountCircle, DarkMode, LightMode } from '@mui/icons-material'
+import { MenuItem, Menu } from '@mui/material'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import './navbarHome.scss'
+import { HomePageNavBarProps } from '../../types'
 
 function Navbar({ mode, setMode }: HomePageNavBarProps) {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <>
       <nav data-aos='fade-down' className='home-nav'>
         <a href='/' className='home-nav__logo'>
-          <img src='/images/hbs-logo.png' alt='' />
+          <img src='/images/lytebox.png' alt='' />
         </a>
 
         <div className='iconbox'>
@@ -78,10 +78,10 @@ function Navbar({ mode, setMode }: HomePageNavBarProps) {
         <MenuItem onClick={() => navigate('/signup')}>Sign up</MenuItem>
       </Menu>
     </>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar
 
 // #eff3f8
 // #92a8d8
