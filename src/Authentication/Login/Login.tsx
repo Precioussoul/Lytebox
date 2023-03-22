@@ -150,7 +150,7 @@ const Login = () => {
             className='google-signin'
           />
         </div>
-        <p className='google-signin-text'>Sign in With Google</p>
+        <p className='google-signin-text'>Continue With Google</p>
       </Button>
       <div className={`account ${mode}`}>
         <p>Don't have an account ?</p>
