@@ -67,9 +67,12 @@ const Login = () => {
         color: mode === 'dark' ? 'text.color' : 'inherit',
       }}
     >
-      <div className='hbs-logo'>
-        <img src='/images/lytebox.png' alt='LyteBox' />
-      </div>
+      {' '}
+      <Link to='/'>
+        <div className='hbs-logo'>
+          <img src='/images/lytebox.png' alt='LyteBox' />
+        </div>
+      </Link>
       <form className={`form ${mode}`} onSubmit={handleSubmit}>
         {hideIcon && <h4 className='demo-header'>This is a demo account</h4>}
         <p className='form-header'>Enter your login details</p>
@@ -113,7 +116,7 @@ const Login = () => {
             />
           </FormControl>
           <div className={`forget-password ${mode}`}>
-            <Link to='/forgot-password'>Forget Password ? `</Link>
+            <Link to='/forgot-password'>Forget Password ?</Link>
           </div>
         </div>
 
@@ -129,7 +132,6 @@ const Login = () => {
           </Button>
         </Box>
       </form>
-
       <Button
         sx={{
           display: 'flex',
