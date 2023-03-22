@@ -2,7 +2,7 @@
 
 # Lytebox
 
-## Development of a Secured Cloud-Based Drive Application Exploiting Web technologies
+## Development of a Secured Cloud-Based Drive Application Using Web technologies
 
 ## Built by Sofiyullah Abdulllah
 
@@ -27,7 +27,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Table of Contents
 
 - [Lytebox](#lytebox)
-  - [Development of a Secured Cloud-Based Drive Application Exploiting Web technologies](#development-of-a-secured-cloud-based-drive-application-exploiting-web-technologies)
+  - [Development of a Secured Cloud-Based Drive Application Using Web technologies](#development-of-a-secured-cloud-based-drive-application-using-web-technologies)
   - [Built by Sofiyullah Abdulllah](#built-by-sofiyullah-abdulllah)
         - [ALX Frontend Specialization Capstone Project](#alx-frontend-specialization-capstone-project)
 - [Lytebox | Keep it light and secure](#lytebox--keep-it-light-and-secure)
@@ -48,11 +48,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Getting Started
 
-- Clone the repository on your local machine with the command below in your terminal, and cd into the **evolt-social** folder
+- Clone the repository on your local machine with the command below in your terminal, and cd into the **lytebox** folder
 
 ```sh
-git clone https://github.com/Precioussoul/HBS-DRIVE.git
-cd HBS-DRIVE
+git clone https://github.com/Precioussoul/lytebox.git
+cd lytebox
 ```
 
 - Install dependencies (if you are using **yarn** then do with that)
@@ -87,7 +87,7 @@ You may also see any lint errors in the console.
 
 ## Live link
 
-https://hbs-drive.web.app/
+https://lytebox.web.app
 
 ## About
 
