@@ -1,7 +1,6 @@
 $box-shadow-ff: 1px 2px 4px 2px rgba(201, 201, 201, 0.3);
 $black-shadow: rgb(0 120 120 / 64%) 0px 5px 15px;
 $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
-
 .file {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@ $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
   position: relative;
   transition: 0.4s;
   width: 170px;
-
   @media (max-width: 400px) {
     width: 150px;
   }
@@ -23,7 +21,6 @@ $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
   @media (min-width: 401px) and (max-width: 1500px) {
     width: 162px;
   }
-
   &:hover {
     // box-shadow: rgba(255, 255, 255, 0.1) 2px 1px 1px 0px inset,
     //   rgba(50, 50, 93, 0.25) 2px 50px 100px -20px,
@@ -35,12 +32,12 @@ $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
   }
   .file-information {
     position: relative;
-    display: flex;
+    display: inline-flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-
   &-img {
     width: 100px;
     height: 100px;
@@ -48,14 +45,12 @@ $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
     border-radius: 15px;
     padding: 5px;
     background-color: #ececf2;
-
     @media (max-width: 600px) {
       width: 70px;
       height: 70px;
       padding: 10px;
       margin: 10px auto;
     }
-
     img {
       width: 100%;
       height: 100%;
@@ -63,7 +58,6 @@ $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
       border-radius: 15px;
     }
   }
-
   &-menu {
     position: absolute;
     top: 0;
@@ -74,7 +68,7 @@ $white-shadow: rgb(120 120 120 / 64%) 0px 5px 15px;
 .menu-item {
   display: flex;
   align-items: center;
-
+  z-index: 4;
   & > *:first-child {
     margin-right: 12px;
   }

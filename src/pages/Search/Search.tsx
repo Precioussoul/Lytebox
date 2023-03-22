@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import File from '../../components/File/File';
-import Folder from '../../components/Folders/Folder';
-import { FileAndFolderContext } from '../../contexts/FileAndFolderContext';
-import './search.scss';
+import React, { useContext } from 'react'
+import File from '../../components/File/File'
+import Folder from '../../components/Folders/Folder'
+import { FileAndFolderContext } from '../../contexts/FileAndFolderContext'
+import './search.scss'
 
 export default function Search() {
   const { searchFiles, searchFolders, searchQuery } =
-    useContext(FileAndFolderContext);
+    useContext(FileAndFolderContext)
   return (
     <div>
       {searchQuery === '' ? (
@@ -43,5 +43,5 @@ export default function Search() {
         </>
       )}
     </div>
-  );
+  )
 }

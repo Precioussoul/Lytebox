@@ -47,7 +47,11 @@ export type AuthGlobalType = {
   verifyEmailAddress: (user: User, message: (msg: string) => void) => any
   updateEmailAddress: (email: string) => any
   updateCurrentPassword: (password: string) => any
-  deleteUserAccount: (currentUser: User) => any
+  deleteUserAccount: (
+    currentUser: User,
+    navigate: (nav: string) => any,
+    setError: (error: string) => void
+  ) => any
   signinWithGoogle: (
     setError: (error: string) => void,
     navigate: any,

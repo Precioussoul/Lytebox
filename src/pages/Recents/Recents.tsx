@@ -1,18 +1,18 @@
-import { ChevronLeft } from '@mui/icons-material';
-import { Button, Divider, Typography } from '@mui/material';
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../App';
-import File from '../../components/File/File';
-import Folder from '../../components/Folders/Folder';
-import { FileAndFolderContext } from '../../contexts/FileAndFolderContext';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import './recents.scss';
+import { ChevronLeft } from '@mui/icons-material'
+import { Button, Divider, Typography } from '@mui/material'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ThemeContext } from '../../App'
+import File from '../../components/File/File'
+import Folder from '../../components/Folders/Folder'
+import { FileAndFolderContext } from '../../contexts/FileAndFolderContext'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
+import './recents.scss'
 
 export default function Recents() {
-  const navigate = useNavigate();
-  const { allFiles, allFolders, loading } = useContext(FileAndFolderContext);
-  const { mode } = useContext(ThemeContext);
+  const navigate = useNavigate()
+  const { allFiles, allFolders, loading } = useContext(FileAndFolderContext)
+  const { mode } = useContext(ThemeContext)
 
   return (
     <>
@@ -39,7 +39,11 @@ export default function Recents() {
           />
           {allFiles.length < 1 && allFolders.length < 1 ? (
             <div className='favorite'>
-              <img src='/images/recents-act.png' alt='' className='fav-img' />
+              <img
+                src='/src/images/recents-act.png'
+                alt=''
+                className='fav-img'
+              />
               <h3>No Activities has been performed Yet </h3>
               <p>Do something, we will record it</p>
             </div>
@@ -68,7 +72,7 @@ export default function Recents() {
         <LoadingSpinner />
       )}
     </>
-  );
+  )
 }
 
 // <div>

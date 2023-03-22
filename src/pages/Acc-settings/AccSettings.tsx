@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import UpdateProfile from '../../Authentication/UpdateProfile/UpdateProfile';
-import UserProfile from '../../Authentication/UserProfile/UserProfile';
+import React, { useState } from 'react'
+import UpdateProfile from '../../Authentication/UpdateProfile/UpdateProfile'
+import UserProfile from '../../Authentication/UserProfile/UserProfile'
 import {
   Alert,
   Box,
@@ -8,23 +8,23 @@ import {
   Divider,
   Snackbar,
   Typography,
-} from '@mui/material';
+} from '@mui/material'
 
-import { color } from '../../theme';
-import './acc-setting.scss';
-import VerifyEmail from '../../Authentication/verifyEmail/VerifyEmail';
-import DeleteAcc from '../../Authentication/deleteAccount/DeleteAcc';
-import { ChevronLeft } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { color } from '../../theme'
+import './acc-setting.scss'
+import VerifyEmail from '../../Authentication/verifyEmail/VerifyEmail'
+import DeleteAcc from '../../Authentication/deleteAccount/DeleteAcc'
+import { ChevronLeft } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 export default function AccSettings() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const handleClose = () => {
-    setLoading(true);
-  };
+    setLoading(true)
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div>
       <Box
@@ -36,7 +36,6 @@ export default function AccSettings() {
           margin: 'auto',
           minHeight: '100vh',
           width: '100%',
-          // backgroundImage: 'url("/images/bubble.webp")',
         }}
       >
         <Snackbar
@@ -96,5 +95,5 @@ export default function AccSettings() {
         </div>
       </Box>
     </div>
-  );
+  )
 }

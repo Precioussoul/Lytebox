@@ -71,13 +71,13 @@ const SignUp = () => {
         minHeight: '100vh',
         backgroundImage:
           mode === 'dark'
-            ? 'url("/images/bubble-dark.webp")'
-            : 'url("/images/bubble.webp")',
+            ? 'url("/src/images/bubble-dark.webp")'
+            : 'url("/src/images/bubble.webp")',
         color: mode === 'dark' ? 'text.color' : 'inherit',
       }}
     >
       <div className='hbs-logo'>
-        <img src='/images/lytebox.png' alt='Lytebox' />
+        <img src='/src/images/lytebox.png' alt='Lytebox' />
       </div>
       <form className={`form ${mode}`} onSubmit={handleSubmit}>
         <p className='form-header'>Sign up for new account</p>

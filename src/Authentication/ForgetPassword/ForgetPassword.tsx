@@ -1,29 +1,29 @@
-import { Box, Button, TextField} from '@mui/material';
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../App';
-import { AuthContext } from '../../contexts/AuthContext';
- 
+import { Box, Button, TextField } from '@mui/material'
+import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ThemeContext } from '../../App'
+import { AuthContext } from '../../contexts/AuthContext'
+
 const ForgetPassword = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { resetPassword } = useContext(AuthContext);
-  const { mode } = useContext(ThemeContext);
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const { resetPassword } = useContext(AuthContext)
+  const { mode } = useContext(ThemeContext)
 
   const handleSubmit = (e: React.ChangeEventHandler<HTMLFormElement> | any) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    setError('');
-    setLoading(true);
+    setError('')
+    setLoading(true)
     resetPassword(email).catch(() => {
-      setError("Email doesn't match our record");
-      setLoading(false);
+      setError("Email doesn't match our record")
+      setLoading(false)
       setTimeout(() => {
-        setError(' ');
-      }, 3000);
-    });
-  };
+        setError(' ')
+      }, 3000)
+    })
+  }
 
   return (
     <Box
@@ -78,7 +78,7 @@ const ForgetPassword = () => {
         <Link to='/signup'>Sign up</Link>
       </div>
     </Box>
-  );
-};
+  )
+}
 
-export default ForgetPassword;
+export default ForgetPassword

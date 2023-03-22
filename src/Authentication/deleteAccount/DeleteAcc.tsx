@@ -1,34 +1,33 @@
-import { Box, Button, Divider, Modal, Typography } from '@mui/material';
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../App';
-import { AuthContext } from '../../contexts/AuthContext';
-import { color } from '../../theme';
-import './deleteAcc.scss';
+import { Box, Button, Divider, Modal, Typography } from '@mui/material'
+import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ThemeContext } from '../../App'
+import { AuthContext } from '../../contexts/AuthContext'
+import { color } from '../../theme'
+import './deleteAcc.scss'
 
 const DeleteAcc = () => {
-  const { currentUser, deleteUserAccount } = useContext(AuthContext);
-  const { mode } = useContext(ThemeContext);
-  const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+  const { currentUser, deleteUserAccount } = useContext(AuthContext)
+  const { mode } = useContext(ThemeContext)
+  const [open, setOpen] = useState(false)
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const handleDelete = (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      deleteUserAccount(currentUser).then(() => {
-        navigate('/login');
-      });
+      deleteUserAccount(currentUser, navigate, setError)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   const handleclose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
   return (
     <div className={`user-acc ${mode}`}>
       <Typography
@@ -74,19 +73,14 @@ const DeleteAcc = () => {
               margin: 'auto',
             }}
           >
+            <h2 className='error'>{error}</h2>
+            <img src='/images/user-trashed.png' alt='user trashed' />
             <div className='modal-acc'>
               <Typography sx={{ width: '80%', fontSize: { xs: '14px' } }}>
                 Your account will be deleted immediately and permanently. Once
                 deleted, accounts can not be restored.
               </Typography>
-
-              <span className='modal-close' onClick={handleclose}>
-                x
-              </span>
             </div>
-            <p className={'modal-p'}>
-              <b>Do you still want to delete account</b>
-            </p>
 
             <div className='form-buttons'>
               <Button type='reset' variant='outlined' onClick={handleclose}>
@@ -106,7 +100,7 @@ const DeleteAcc = () => {
         </Modal>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DeleteAcc;
+export default DeleteAcc

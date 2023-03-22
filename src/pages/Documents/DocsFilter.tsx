@@ -1,14 +1,14 @@
-import { ChevronLeft } from '@mui/icons-material';
-import { Button, Divider, Typography } from '@mui/material';
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import File from '../../components/File/File';
-import { FileAndFolderContext } from '../../contexts/FileAndFolderContext';
-import { color } from '../../theme';
+import { ChevronLeft } from '@mui/icons-material'
+import { Button, Divider, Typography } from '@mui/material'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import File from '../../components/File/File'
+import { FileAndFolderContext } from '../../contexts/FileAndFolderContext'
+import { color } from '../../theme'
 
 export default function DocsFilter() {
-  const navigate = useNavigate();
-  const { documents } = useContext(FileAndFolderContext);
+  const navigate = useNavigate()
+  const { documents } = useContext(FileAndFolderContext)
 
   return (
     <div>
@@ -39,11 +39,11 @@ export default function DocsFilter() {
         </Button>{' '}
       </div>
       <Divider />
-      <div className='recents-view'>
+      <div className='file-view'>
         {documents.map((file: any) => (
           <File key={file.id} file={file} />
         ))}
       </div>
     </div>
-  );
+  )
 }

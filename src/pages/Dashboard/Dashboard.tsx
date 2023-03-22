@@ -153,7 +153,7 @@ export default function Dashboard() {
               />
             </div>
           </div>
-          {childFiles.length <= 0 && childFolders.length <= 0 ? (
+          {childFiles?.length <= 0 && childFolders?.length <= 0 ? (
             <div className='welcome-empty'>
               <h2>Welcome to Lytebox</h2>
               <img src='/images/handshake.png' alt='' />
@@ -163,7 +163,7 @@ export default function Dashboard() {
               </p>
             </div>
           ) : (
-            <>
+            <div className='file-folder-wrapper'>
               <div className='folders'>
                 {childFolders.length > 0 && (
                   <div className='folders-info'>
@@ -190,7 +190,7 @@ export default function Dashboard() {
                   ))}
                 </div>
               )}
-            </>
+            </div>
           )}
         </div>
       ) : (

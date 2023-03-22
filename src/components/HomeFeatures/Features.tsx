@@ -1,7 +1,7 @@
-import React from 'react';
-import Feature from './Feature';
-import './feature.scss';
-import { modeProps } from '../../types';
+import React from 'react'
+import Feature from './Feature'
+import './feature.scss'
+import { modeProps } from '../../types'
 
 const Features = ({ mode }: modeProps) => {
   return (
@@ -9,11 +9,10 @@ const Features = ({ mode }: modeProps) => {
       <div data-aos='fade-down' className='features-header'>
         <p className='features-header-intro'>Fit for you</p>
         <h3 className='features-header-greeting'>
-          <span className={mode}>Welcome to HbsDrive</span>
-          <span className='alias'>(Habsof Drive)</span>
+          <span className={mode}>Welcome to Lytebox</span>
         </h3>
         <p className='features-header-desc'>
-          Inside HbsDrive, we present everything you need to interact with your
+          Inside Lytebox, we present everything you need to interact with your
           files in the cloud.
         </p>
       </div>
@@ -29,7 +28,7 @@ const Features = ({ mode }: modeProps) => {
           image={'/images/pie-chart.png'}
           name={'Structured'}
           description={
-            'HBS drive is designed to put things in correct order for you.'
+            'Lytebox is designed to put things in correct order for you.'
           }
         />
 
@@ -37,7 +36,7 @@ const Features = ({ mode }: modeProps) => {
           image={'/images/share.png'}
           name={'Share'}
           description={
-            "Send files to anyone, even if they don't have HbsDrive account."
+            "Send files to anyone, even if they don't have Lytebox account."
           }
         />
         <Feature
@@ -49,7 +48,7 @@ const Features = ({ mode }: modeProps) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Features;
+export default Features

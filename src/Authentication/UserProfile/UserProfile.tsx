@@ -1,59 +1,59 @@
-import { Button, TextField } from '@mui/material';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../App';
-import { AuthContext } from '../../contexts/AuthContext';
-import { storage } from '../../firebase/firebase';
-import { color } from '../../theme';
-import './userProfile.scss';
-import { Blob } from 'buffer';
+import { Button, TextField } from '@mui/material'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ThemeContext } from '../../App'
+import { AuthContext } from '../../contexts/AuthContext'
+import { storage } from '../../firebase/firebase'
+import { color } from '../../theme'
+import './userProfile.scss'
+import { Blob } from 'buffer'
 
 const UserProfile = () => {
-  const [file, setFile] = useState<Blob | any>('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { currentUser, updateUserProfile } = useContext(AuthContext);
-  const { mode } = useContext(ThemeContext);
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [file, setFile] = useState<Blob | any>('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const { currentUser, updateUserProfile } = useContext(AuthContext)
+  const { mode } = useContext(ThemeContext)
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   //   save files to cloud
-  const avatarRef = ref(storage, `avatar/${currentUser.uid}/${file.name}`);
+  const avatarRef = ref(storage, `avatar/${currentUser.uid}/${file.name}`)
 
   if (file !== undefined || file !== '') {
-    uploadBytes(avatarRef, file);
+    uploadBytes(avatarRef, file)
   }
 
   function handleSaveChange(e: any) {
-    e.preventDefault();
+    e.preventDefault()
 
-    const fullname = firstName + ' ' + lastName;
+    const fullname = firstName + ' ' + lastName
 
     //   get dowload url
     getDownloadURL(avatarRef)
       .then((url) => {
-        setLoading(true);
-        setMessage('');
-        setFile('');
+        setLoading(true)
+        setMessage('')
+        setFile('')
 
-        updateUserProfile(fullname, url, setError, navigate);
-        setMessage('your changes has been saved');
+        updateUserProfile(fullname, url, setError, navigate)
+        setMessage('your changes has been saved')
 
         setTimeout(() => {
-          setLoading(false);
-        }, 2000);
+          setLoading(false)
+        }, 2000)
       })
       .catch(() => {
-        setError('please resave changes');
+        setError('please resave changes')
         setTimeout(() => {
-          setLoading(false);
-          setMessage('');
-        }, 2000);
-      });
+          setLoading(false)
+          setMessage('')
+        }, 2000)
+      })
 
     // setError("your changes has been saved");
   }
@@ -145,7 +145,7 @@ const UserProfile = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile

@@ -27,10 +27,10 @@ $black-shadow: rgba(0, 120, 120, 0.5) 0px 5px 15px;
   > * {
     margin: 11px;
     @media (max-width: 600px) {
-      margin: 6px 2px;
+      margin: 10px 2px;
     }
     @media (min-width: 990px) and (max-width: 1320px) {
-      margin: 13.5px;
+      margin: 9.5px;
     }
   }
   // .file {
@@ -42,17 +42,25 @@ $black-shadow: rgba(0, 120, 120, 0.5) 0px 5px 15px;
   display: flex;
   flex-wrap: wrap;
   flex: 1;
-  > * {
-    @media (max-width: 600px) {
-      margin: 0.8em 0.1858em;
-      // justify-content: space-between;
-    }
-    @media (min-width: 320px) and (max-width: 400px) {
-      margin: 0.8em 0.1858em;
-      // justify-content: space-between;
-    }
-    margin: 0.8em 0.3758em;
+  // justify-content: space-between;
+  @media (max-width: 600px) {
+    width: 95vw;
+    // width: 100%;
+    justify-content: space-between;
+    margin: 0 auto !important;
   }
+  > * {
+    margin: 6px;
+    @media (max-width: 600px) {
+      margin: 12px 0px;
+    }
+    @media (min-width: 990px) and (max-width: 1320px) {
+      margin: 7.4px;
+    }
+  }
+  // .file {
+  //   margin-top: 30px;
+  // }
 }
 
 .filter-view {
@@ -100,6 +108,14 @@ $black-shadow: rgba(0, 120, 120, 0.5) 0px 5px 15px;
         color: #ccc;
       }
     }
+  }
+  .m-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .m-icon {
+    color: #5a65f3;
   }
   .m-storage {
     &-dashboard {

@@ -1,5 +1,5 @@
-import React from 'react';
-import { modeProps } from '../../types';
+import React from 'react'
+import { modeProps } from '../../types'
 
 const SectionTwo = ({ mode }: modeProps) => {
   return (
@@ -10,7 +10,7 @@ const SectionTwo = ({ mode }: modeProps) => {
           Secured and Structured new home for your all files
         </h2>
         <p className='text-showcase-desc'>
-          HbsDrive Clean and Beautify your new home for your files with great
+          Lytebox Clean and Beautify your new home for your files with great
           care, easy access to important files on time with a structured design,
           Compatible with all devices.
         </p>
@@ -23,7 +23,7 @@ const SectionTwo = ({ mode }: modeProps) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SectionTwo;
+export default SectionTwo

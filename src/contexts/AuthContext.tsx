@@ -85,8 +85,15 @@ function AuthProvider({ children }: { children: ReactNode }) {
     return signOut(auth)
   }
   // delete user account
-  function deleteUserAccount(currentUser: any) {
+  function deleteUserAccount(currentUser: User, navigate: any, setError: any) {
     return deleteUser(currentUser)
+      .then(() => {
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log(error)
+        setError(`${error.message}`)
+      })
   }
 
   function updateUserProfile(

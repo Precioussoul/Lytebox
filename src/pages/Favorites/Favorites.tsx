@@ -1,19 +1,19 @@
-import { ChevronLeft } from '@mui/icons-material';
-import { Button, Divider } from '@mui/material';
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../../App';
-import File from '../../components/File/File';
-import Folder from '../../components/Folders/Folder';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import { FileAndFolderContext } from '../../contexts/FileAndFolderContext';
-import './favorites.scss';
+import { ChevronLeft } from '@mui/icons-material'
+import { Button, Divider } from '@mui/material'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ThemeContext } from '../../App'
+import File from '../../components/File/File'
+import Folder from '../../components/Folders/Folder'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
+import { FileAndFolderContext } from '../../contexts/FileAndFolderContext'
+import './favorites.scss'
 
 export default function Favorites() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const { loading, fileFavorites, folderFavorites } =
-    useContext(FileAndFolderContext);
-  const { mode } = useContext(ThemeContext);
+    useContext(FileAndFolderContext)
+  const { mode } = useContext(ThemeContext)
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function Favorites() {
           />
           {fileFavorites.length < 1 && folderFavorites.length < 1 ? (
             <div className='favorite'>
-              <img src='/images/starred.png' alt='' className='fav-img' />
+              <img src='/src/images/starred.png' alt='' className='fav-img' />
               <h3>Nothing is starred or favoured 💕</h3>
               <p>Add a star to a file and folder</p>
             </div>
@@ -59,5 +59,5 @@ export default function Favorites() {
         <LoadingSpinner />
       )}
     </>
-  );
+  )
 }

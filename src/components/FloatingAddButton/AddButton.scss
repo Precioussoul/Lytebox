@@ -9,14 +9,12 @@
   height: 70px;
   border-radius: 20%;
   background-color: #1a22fc;
-
   &.dark {
     background-color: #1c2541;
   }
   //   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 2px 4px 10px 1px rgba(11, 119, 47, 0.301);
   box-shadow: 2px 4px 10px 1px rgba(4, 68, 68, 0.47);
-
   @media (max-width: 600px) {
     right: 20px;
     display: block;
@@ -26,7 +24,6 @@
   @media (min-width: 1400px) {
     right: 335px;
   }
-
   & span,
   .tooltip {
     position: relative;
@@ -41,7 +38,6 @@
       transform: rotate(135deg);
     }
   }
-
   ul {
     position: absolute;
     bottom: 55px;
@@ -59,7 +55,6 @@
     z-index: 6;
     visibility: hidden;
     transition: 0.3s;
-
     &.dark {
       background-color: #444140;
       color: #eee;
@@ -91,18 +86,15 @@
     &:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-
     & .icon {
       margin-right: 10px;
       opacity: 0.2;
       transform: scale(0.8);
-
       &:hover {
         opacity: 0.8;
       }
     }
   }
-
   .file-up {
     display: none;
     visibility: hidden;
@@ -118,6 +110,7 @@
   display: none;
   visibility: hidden;
 }
+
 .show {
   display: block;
   visibility: visible;
