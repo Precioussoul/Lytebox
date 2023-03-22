@@ -93,6 +93,9 @@ function AuthProvider({ children }: { children: ReactNode }) {
       .catch((error) => {
         console.log(error)
         setError(`${error.message}`)
+        setTimeout(() => {
+          setError('')
+        }, 3000)
       })
   }
 

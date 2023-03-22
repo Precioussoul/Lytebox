@@ -37,27 +37,27 @@ const HeroSection = ({ mode }: modeProps) => {
       </div>
       <div data-aos='zoom-in' className='hero-image'>
         {mode === 'light' ? (
-          <img src='/src/images/hbs-mob-app.png' className='app-img' alt='' />
+          <img src='/images/hbs-mob-app.png' className='app-img' alt='' />
         ) : (
-          <img src='/src/images/hbs-mob-dark.png' className='app-img' alt='' />
+          <img src='/images/hbs-mob-dark.png' className='app-img' alt='' />
         )}
         <img
-          src='/src/images/image.png'
+          src='/images/image.png'
           className={`img abs ${mode} abs-1`}
           alt='images'
         />
         <img
-          src='/src/images/mp3.png'
+          src='/images/mp3.png'
           className={`img abs ${mode} abs-2`}
           alt='mp3'
         />
         <img
-          src='/src/images/docs.png'
+          src='/images/docs.png'
           className={`img abs ${mode} abs-4`}
           alt='document'
         />
         <img
-          src='/src/images/zip.png'
+          src='/images/zip.png'
           className={`img abs ${mode} abs-3`}
           alt='zip'
         />

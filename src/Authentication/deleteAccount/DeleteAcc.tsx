@@ -61,24 +61,48 @@ const DeleteAcc = () => {
           <Box
             sx={{
               width: { xs: '90vw', sm: 520 },
-              height: { xs: '35vh', sm: 250 },
+              height: { xs: '50vh', sm: 450 },
               backgroundColor: 'background.default',
               position: 'absolute',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+              textAlign: 'center',
               top: 0,
               bottom: 0,
               right: 0,
               left: 0,
-              padding: { xs: 1.5, sm: 2 },
+              padding: { xs: 1, sm: 1.5 },
               borderRadius: 5,
               margin: 'auto',
             }}
           >
             <h2 className='error'>{error}</h2>
-            <img src='/images/user-trashed.png' alt='user trashed' />
+            <div className='user-img-wrapper'>
+              <img src='/images/user-trashed.png' alt='user trashed' />
+            </div>
             <div className='modal-acc'>
-              <Typography sx={{ width: '80%', fontSize: { xs: '14px' } }}>
+              <Typography
+                variant='h3'
+                sx={{
+                  fontSize: '1.3rem',
+                  fontWeight: 'bold',
+                  flexWrap: 'wrap',
+                }}
+              >
+                Are you sure you want to delete this account?
+              </Typography>
+              <Typography
+                paragraph
+                sx={{
+                  fontSize: { xs: '12px', sm: '15px' },
+                  lineHeight: 1.5,
+                  marginTop: 1,
+                }}
+              >
                 Your account will be deleted immediately and permanently. Once
-                deleted, accounts can not be restored.
+                deleted, account cannot be restored.
               </Typography>
             </div>
 

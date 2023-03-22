@@ -530,7 +530,7 @@ function Layout(props: any) {
                     vertical: 'top',
                     horizontal: 'center',
                   }}
-                  sx={{ width: '320px' }}
+                  sx={{ width: '320px', overflow: 'hidden' }}
                 >
                   <Alert
                     severity={file.error ? 'warning' : 'success'}
